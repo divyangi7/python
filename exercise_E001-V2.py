@@ -38,14 +38,14 @@ class product(category):
         self.category = category
         self.price = price
 
-c1 = category('vehicle','020',5 ,None,None)
-c2 = category('car', '030', 5, None, None)
-c3 = category('petrol','010', 5,None, None)
-c4 = category('disel', '040', 5 , None, None)
-c5 = category('electric', '060', 5 ,None, None)
+c1 = category('vehicle','020',0 ,None,None)
+c2 = category('car', '030', 0, None, None)
+c3 = category('petrol','010', 0, None, None)
+c4 = category('disel', '040', 0, None, None)
+c5 = category('electric', '060', 0, None, None)
 c_list = [c1, c2, c3, c4, c5]
 
-p1 = product()
+p1 = product('cycle')
 p2 = product()
 p3 = product()
 p4 = product()
