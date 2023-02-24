@@ -40,35 +40,32 @@ class product(category):
         print("product price is :", self.price)
 
 
-
-
-
     def show_product_code():
         for i in p:
             if (search_code == i.code):
                 i.product_details()
 
-    def price_print_low_to_high():
-        for i in range(len(p) - 1):
-            for j in range(len(p) - 1 - i):
-                if (p[j].price > p[j + 1].price):
-                    t = p[j]
-                    p[j] = p[j + 1]
-                    p[j + 1] = t
-        for i in range(len(p)):
-            p[i].product_details_in_row()
 
+    def price_print_low_to_high():
+        for i in range(len(p)-1):
+            for j in range(i+1, len(p)):
+                if p[j].price < p[i].price:
+                    p[i], p[j] = p[j], p[i]
+
+        for product in p:
+            product.product_details_in_row()
 
     def price_print_high_to_low():
-        for i in range(len(p) - 1):
-            for j in range(len(p) - 1 - i):
-                if (p[j].price > p[j + 1].price):
-                    t = p[j]
-                    p[j] = p[j + 1]
-                    p[j + 1] = t
+        for i in range(len(p)-1):
+            for j in range(i+1, len(p)):
+                if p[j].price > p[i].price:
+                    p[i], p[j] = p[j], p[i]
 
-        for i in reversed(range(len(p))):
-            p[i].product_details_in_row()
+        for product in p:
+            product.product_details_in_row()
+
+
+
 
 c1 = category('soap', '020', 0)
 c2 = category('shampoo', '010', 0)
@@ -98,8 +95,6 @@ c3.show_details()
 
 
 
-
-
 #sort and print products based on price
   #price high to low
 print("--------------------------------------------")
@@ -108,7 +103,6 @@ print(" Name          code         category    Price ")
 print("----------------------------------------------")
 print(product.price_print_high_to_low())
 
-
 print(" Sorting Price => low to high")
 print("----------------------------------------------")
 print(" Name          code         category    Price ")
@@ -116,13 +110,9 @@ print("----------------------------------------------")
 print(product.price_print_low_to_high())
 
 
-
 #search product using its code
 search_code = int(input("enter the code :"))
 print(product.show_product_code())
-
-
-
 
 
 
