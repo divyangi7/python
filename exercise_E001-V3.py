@@ -35,10 +35,10 @@ class product:
         self.stock_at_location[location] = stock
 
     def product_details(self):
-        print("product name:", self.name)
-        print("product code:", self.code)
-        print("product price:", self.price)
-        print("product  stock location:", self.stock_at_location)
+        print("name:", self.name)
+        print("code:", self.code)
+        print("price:", self.price)
+        print("stock location:", self.stock_at_location)
 
 
 #create class name movement with members from_location , to_location and product , quantity
@@ -70,11 +70,11 @@ l4 = location("vadodara", "010")
 l = [l1, l2, l3, l4]
 
 #create 5 different product objects
-p1 = product("mobile", "001", 5000, {})
-p2 = product("TV", "002", 10000, {})
-p3 = product("laptop", "003", 14000, {})
-p4 = product("oven", "004", 2500, {})
-p5 = product("shoes", "005", 250, {})
+p1 = product("mobile", "001", 5000, {l1:1000})
+p2 = product("TV", "002", 10000, {l2: 500})
+p3 = product("laptop", "003", 14000, {l3:300})
+p4 = product("oven", "004", 2500, {l4:200})
+p5 = product("shoes", "005", 250, {l1:100})
 p = [p1, p2, p3, p4, p5]
 
 
@@ -89,7 +89,6 @@ m = [m1, m2, m3, m4, m5]
 #display movement for each product
 print(" -------Movement_by_product------- ")
 for product in p:
-    print(f"Movement details for product {product.name}:")
     movements = movement.movements_by(product.name)
     if len(movements) == 0:
         print("No movements found for this product.")
@@ -99,12 +98,12 @@ for product in p:
     print()
 
 
-#display product details with its at various location using ...
-
+#'Display product details with its stock at various locations using “stock_at_locations
+print("------- show product--------")
 for product in p:
-    print(f"stock {product.name} at different location:")
-    for location in l:
-        if location.code in product.stock_at_location:
-            print(f"{location.name} : {product.stock_at_location[location.code]}")
-        else:
-            print(f"{location.name}: ")
+    print(f"product=>  name: {product.name} | price: {product.price} | code: {product.code} | stock_at_location : {product.stock_at_location}")
+
+
+
+#Display product list by location ( group by location).
+
