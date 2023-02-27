@@ -43,6 +43,7 @@ class product:
 
 #create class name movement with members from_location , to_location and product , quantity
 class movement:
+    movement = []
 
     def __init__(self,from_location, to_location, product, quantity):
         self.from_location = from_location
@@ -57,10 +58,18 @@ class movement:
         print("quantity:", self.quantity)
 
     @staticmethod
-    def movements_by(product):
+    def movements_by_product(product):
       return [movement for movement in m
             if movement.product ==product]
 
+    @staticmethod
+    def move_product(from_location, to_location, product, quantity):
+        if from_location.stock_at_location[product] < quantity:
+            raise ValueError("Not stock to move")
+        from_location.stock_at_location[product] -= quantity
+        to_location.stock_at_location[product] += quantity
+        movement = Movement(from_location, to_loction, product, quantity)
+        return movements
 
 #create 4 different location object
 l1 = location("rajkot","020")
@@ -89,7 +98,7 @@ m = [m1, m2, m3, m4, m5]
 #display movement for each product
 print(" -------Movement_by_product------- ")
 for product in p:
-    movements = movement.movements_by(product.name)
+    movements = movement.movements_by_product(product.name)
     if len(movements) == 0:
         print("No movements found for this product.")
     else:
@@ -102,8 +111,11 @@ for product in p:
 print("------- show product--------")
 for product in p:
     print(f"product=>  name: {product.name} | price: {product.price} | code: {product.code} | stock_at_location : {product.stock_at_location}")
-
+print()
 
 
 #Display product list by location ( group by location).
+print("------- Product List by Location -------")
+for loc in l:
+    print(f"Location: {loc.name} ")
 
