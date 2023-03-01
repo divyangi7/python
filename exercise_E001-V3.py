@@ -31,8 +31,12 @@ class product:
         self.price = price
         self.stock_at_location = {}
 
-    def update_stock(self,location, stock):
+    def add_stock_at_location(self,location, stock):
         self.stock_at_location[location] = stock
+
+    def get_stock_at_location(self,location):
+        return self.stock_at_location.get(location,0)
+
 
     def product_details(self):
         print("name:", self.name)
@@ -62,14 +66,14 @@ class movement:
       return [movement for movement in m
             if movement.product ==product]
 
-    @staticmethod
-    def move_product(from_location, to_location, product, quantity):
-        if from_location.stock_at_location[product] < quantity:
-            raise ValueError("Not stock to move")
-        from_location.stock_at_location[product] -= quantity
-        to_location.stock_at_location[product] += quantity
-        movement = Movement(from_location, to_loction, product, quantity)
-        return movements
+   # @staticmethod
+    #def move_product(from_location, to_location, product, quantity):
+     #   if from_location.stock_at_location[product] < quantity:
+      #      raise ValueError("Not stock to move")
+       # from_location.stock_at_location[product] -= quantity
+        #to_location.stock_at_location[product] += quantity
+        #movement = Movement(from_location, to_loction, product, quantity)
+        #return movements
 
 #create 4 different location object
 l1 = location("rajkot","020")
